@@ -5,32 +5,25 @@ class Object{
 	public function create(){
 		global $db;
 
-		$sql="INSERT INTO " . static::$table . " (username, email, password) VALUES('$this->username', '$this->email', '$this->password')";
+		$props= $this->class_properties();
+
+		$sql="INSERT INTO " . static::$table . "(". implode(", ", array_keys($props)).") VALUES('".implode("', '", array_values($props))."')";
 		$db->query($sql);
 	}
 
 
-	public static function assign_properties($row){
-		$child_class= get_called_class();
-		$object= new $child_class;
+	public function class_properties(){
+		$properties= array();
 
-		foreach ($row as $key => $value) {
-			if ($object->has_property($key)) {
-				$object->$key= $value;
+		foreach (static::$table_columns as $column) {
+			if (property_exists($this, $column)) {
+				$properties[$column]= $this->$column;
 			}
 		}
+		return $properties;
 	}
-
-	private function has_property($prop){
-		$obj_props= get_object_vars($this);
-		return array_key_exists($prop, $obj_props);
-	}
-
-
-
 
 
 }//END OF CLASS
-
-
 ?>
+

@@ -2,9 +2,10 @@
 class Product extends Object {
 
 	protected static $table="products";
-	public $username;
-	public $email;
-	public $password;
+	protected static $table_columns= array('name', 'make', 'model');
+	public $name;
+	public $make;
+	public $model;
 
 
 
@@ -13,7 +14,7 @@ class Product extends Object {
 
 
 
-}
+}//END OF CLASS
 
 
 

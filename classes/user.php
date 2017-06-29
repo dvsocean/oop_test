@@ -3,14 +3,12 @@
 class User extends Object {
 
 	protected static $table= "users";
+	protected static $table_columns= array('username', 'email', 'password');
 	public $username;
 	public $email;
 	public $password;
 
-		public function show_me(){
-			$props= get_class_vars();
-			return $props;
-		}
+		
 
 }
 
