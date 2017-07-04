@@ -11,6 +11,21 @@ class Object{
 		$db->query($sql);
 	}
 
+	public function update($id){
+		global $db;
+		$props= $this->class_properties();
+		$prop_pairs= array();
+
+		foreach ($props as $key => $value) {
+			if (isset($value)) {
+				$prop_pairs[]="{$key}='{$value}'";
+			}	
+		}
+
+		$sql="UPDATE " . static::$table . " SET " . implode(", ", $prop_pairs) ." WHERE " . static::$where_clause . "='$id'";
+		$db->query($sql);
+	}
+
 
 	public function class_properties(){
 		$properties= array();

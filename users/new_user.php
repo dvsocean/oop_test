@@ -24,9 +24,7 @@
 				<label>Password:</label><br>
 				<input type="text" name="password"><br><br>
 			</td>
-
 		</tr>
-		
 	</table>
 
 	<div align="center">
