@@ -1,44 +1,81 @@
 <?php 
-class Object{
+//CREATING NEW CLASS
+class Object {
 
 
-	public function create(){
+	public function create() {
+
 		global $db;
+		$prop= $this->class_properties();
 
-		$props= $this->class_properties();
+							//						//COLUMN NAMES
+		$sql="INSERT INTO ". static::$table ."(".implode(", ", array_keys($prop)).")";
+		$sql.=" VALUES('".implode("', '", array_values($prop))."');";
 
-		$sql="INSERT INTO " . static::$table . "(". implode(", ", array_keys($props)).") VALUES('".implode("', '", array_values($props))."')";
-		$db->query($sql);
+		//COMMUNICATE WITH THE DATABASE using the query
+		$fp=$db->query($sql);
+		//TESTING IF THIS PRODUCT INSTER FUNCTUALITY
+		if (!$fp) {
+			die("IDGAF!!.." . $db->conn->error);
+		}
+		return $db->auto_id();
 	}
 
+
+
+
+
+
+
+
+	// UPDATED
 	public function update($id){
 		global $db;
-		$props= $this->class_properties();
-		$prop_pairs= array();
+		$prop= $this->class_properties();
+		$properties= array();
 
-		foreach ($props as $key => $value) {
-			if (isset($value)) {
-				$prop_pairs[]="{$key}='{$value}'";
-			}	
+		foreach ($prop as $key => $value) {
+			if(isset($value)){
+				$properties[]="{$key}='{$value}'";
+			}
 		}
 
-		$sql="UPDATE " . static::$table . " SET " . implode(", ", $prop_pairs) ." WHERE " . static::$where_clause . "='$id'";
-		$db->query($sql);
+	//LAST_NAME, ADDRESS, STATE, PHONE_NUMBER ARE DELETED
+		$sql="UPDATE ". static::$table ." SET ".implode(", ", $properties)." WHERE ".static::$where_clause."='$id'";
+
+		if (!$db->query($sql)) {
+			die("WTF ... " . $db->conn->error);
+		}
 	}
+ 
+
+
 
 
 	public function class_properties(){
 		$properties= array();
 
-		foreach (static::$table_columns as $column) {
+//CREATING A foreoop FOR AN ARRAY
+		foreach(static::$table_columns as $column) {
 			if (property_exists($this, $column)) {
-				$properties[$column]= $this->$column;
+				$properties[$column]=$this->$column;
 			}
 		}
 		return $properties;
 	}
 
 
-}//END OF CLASS
-?>
 
+
+
+}//END OF CLASS
+
+
+
+
+
+
+
+
+
+?>
