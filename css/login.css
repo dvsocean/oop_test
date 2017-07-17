@@ -17,9 +17,6 @@ h1 {
     border-style: double;
     border-width: 15px;
 }
-b {
-
-}
 input[type=text] {
     width: 100%;
     padding: 12px 20px;
@@ -50,7 +47,6 @@ button {
 }
 button:hover {
     opacity: 0.8;
-
 }
 .signupbtn {
     width: auto;
@@ -69,8 +65,7 @@ button:hover {
 img.avatar {
     background-color: #716B74;
     width: 30%;
-    border-radius: 35%;
-    
+    border-radius: 35%;   
 }
 .avatar:hover {
     border: solid yellow;

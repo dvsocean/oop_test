@@ -1,9 +1,5 @@
-<?php 
-/**
- * User: umber
- * Date: present
- * Time: 8:30 PM
- */
+<?php
+require_once('../classes/ini.php'); 
 
 ?>
 
@@ -16,29 +12,33 @@
 
     <title>Login</title>
     
-<!--JQUERY CORE-->
+    <!--JQUERY CORE-->
     <script
         src="https://code.jquery.com/jquery-3.2.1.js"
         integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
         crossorigin="anonymous">
     </script>
-<!--JQUERY CORE-->
+    <!--JQUERY CORE-->
       
-      <style>
-          body {
-            background-image: url("../beerrunners_main/product_image/coconut_tree.png");
-          }
-      </style>
 
-<!--BOOTSTRAP LINK FOLDER-->
-<link rel="stylesheet" href="../bootstrap/css/bootstrap.css"> 
-<!--BOOTSTRAP LINK FOLDER-->
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <style>
+        body {
+          background-image: url("../beerrunners_main/product_image/coconut_tree.png");
+        }
+    </style>
+    <!--CSS-->
+
+    <!--BOOTSTRAP LINK FOLDER-->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css"> 
+    <!--BOOTSTRAP LINK FOLDER-->
+
 
 </home>
 <body>
 
-    <!--BUTTONS COMMUNICATING LIKE ACTIONS-->
-   
+    <!--BUTTONS IN ACTION-->  
      <br><br>
       <div class="container">
         <div class="row" align="right">
@@ -47,17 +47,16 @@
           </div>
         </div>
       </div>
- 
-    <!--BUTTONS COMMUNICATING LIKE ACTIONS-->
+    <!--BUTTONS IN ACTION-->
 
-<h1><center><b>Login</b></center></h1>
+<h2><center><b>Login</b></center></h2>
 
 <!--LOG IN FORM START!!!-->
 <form action="login_page_data.php" method="POST" >
   <div class="container">
     <div class="row" align="center">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <img src="../beerrunners_main/product_image/avatar.png" width="150" height="150" class="img-circle">
+        <a href="../index.php"><img src="../beerrunners_main/product_image/avatar.png" width="100" height="100" class="img-circle"></a>
       </div>
     </div>  
   </div>
@@ -65,18 +64,19 @@
   <div class="container" align="#center" style="background-color:B06666">
     <div class="row" align="center">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <label>USER NAME..</label><br>
-        <input class="#form-control" placeholder="Enter Username" type="text" name="username" required>
+        <?php Session::display_message(); ?><br>
+        <label style="color: green;">USER NAME..</label><br>
+        <input class="#form-control" style="background-color: #dbdbdb" placeholder="Enter Username" type="text" name="username" required>
         <br><br>
 
-        <label>PASSWORD..</label><br>
-        <input class="#form-control" placeholder="Enter Password" type="password" name="psw" required>
+        <label style="color: green;">PASSWORD..</label><br>
+        <input class="#form-control" style="background-color: #dbdbdb" placeholder="Enter Password" type="password" name="psw" required>
         <br>
 
         <a href="../password/password_reset.php">Forgot your password?</a>
         <br><br>
       
-        <button type="submit" name="pro">LOG-IN</button>
+        <button type="submit" name="login">LOG-IN</button>
 
         <a href="../signup/signup_page.php"><button type="button" class="signupbtn">Create an account</button>
       </div>

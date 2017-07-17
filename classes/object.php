@@ -35,7 +35,7 @@ class Object {
 		$properties= array();
 
 		foreach ($prop as $key => $value) {
-			if(isset($value)){
+			if (isset($value)) {
 				$properties[]="{$key}='{$value}'";
 			}
 		}
@@ -65,7 +65,9 @@ class Object {
 	}
 
 
-
+//obstraction 
+	//create protected static functions 
+		//
 
 
 }//END OF CLASS

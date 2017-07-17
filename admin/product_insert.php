@@ -25,7 +25,7 @@
 <a href="../profile/profile.php" style="margin-left: 800px;" class="btn btn-primary">Profile</a>
 
 <form action="product_insert_data.php" method="POST" enctype="multipart/form-data" name="item_form">
-	<table border="0" align="center">
+	<table border="1" align="center">
 		<tr>
 			<td>
 				<strong>Image</strong>

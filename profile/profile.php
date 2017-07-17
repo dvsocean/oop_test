@@ -5,17 +5,34 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>User Profile</title>
 
-<!--JQUERY CORE-->
+      <title>User Profile</title>
+
+    <!--JQUERY CORE-->
     <script
         src="https://code.jquery.com/jquery-3.2.1.js"
         integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
         crossorigin="anonymous">
     </script>
-<!--JQUERY CORE-->
+    <!--JQUERY CORE-->
 
-<link rel="stylesheet" href="../bootstrap/css/bootstrap.css"> 
+    <!--JS-->
+    <script type="text/javascript" src="../js/navbar_functionality.js"></script>
+    <!--JS-->
+
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <style>
+      body{
+        background-image: url("../beerrunners_main/product_image/coconut_tree.png");
+      }
+    </style>
+    <!--CSS-->
+
+    <!--BOOTSTRAP LINK FOLDER-->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css"> 
+    <!--BOOTSTRAP LINK FOLDER-->
+
 
 </head>
 <body>
@@ -24,57 +41,89 @@
 
   $id= $_SESSION['user_id'];
 
-//REMOVED LAST_NAME, CITY, ADDRESS,.. ECT.
     $sql="SELECT * FROM users WHERE id='$id'";
-    $result=$db->query($sql);
+    $result= $db->query($sql);
   if ($row= $result->fetch_object()) {
-        $fname=$row->first_name;
-        $email=$row->email;
+        $fname= $row->first_name;
+        $lname= $row->last_name;
+        $email= $row->email;
         $uname= $row->user_name;
+        $photo= $row->photo_path;
   }
 
 ?>
 
-<!--BUTTONS ACTING LIKE ACTIONS***-->
-<a href="../index.php" class="btn btn-primary">Home</a>
+<!--NAVIGATION DROP DOWN-->
+<?php include("../includes/nav_bar.php"); ?>
+<!--NAVIGATION DROP DOWN-->
 
-<a href="../admin/product_insert.php" class="btn btn-primary">Products</a>
+<!--BUTTONS IN ACTION-->
+<div class="container">
+  <div class="row" align="right">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <a href="../admin/product_insert.php" class="btn btn-primary">Products</a>
 
-<a href="../logout/logout_page_data.php" class="btn btn-danger">Logout</a><br><br>
+      <a href="../logout/logout_page_data.php" class="btn btn-danger">Logout</a>
+      <a href="../admin/all_products.php" class="btn btn-default">All products</a><br>
+    </div>
+  </div>
+</div>
+<!--BUTTONS IN ACTION-->
 
-<a href="../admin/all_products.php" class="btn btn-primary">All products</a>
-<!--BUTTONS ACTING LIKE ACTIONS***-->
-
-<!--ACCOUNT MANAGE FORM START***-->
-<form action="../update/user_update_data.php" method="POST">
 <div class="container">
   <div class="row" align="center">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <img src="../beerrunners_main/product_image/master_cheif.jpg" width="150" height="150" class="img-circle">
+      <label style="font-size: 25px; background-color: red;">PROFILE</label>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  $(function(){
+    var photo_name= $('#photo').val();
+    //alert(photo_name);
+  });
+</script>
+<a href="" id="test">TEST</a>
+
+
+                                    
+<!-- ACCOUNT MANAGE FORM START***             ONLY USE WITH 'PHOTOS'-->
+<form action="../update/user_update_data.php" method="POST" enctype="multipart/form-data">
+<div class="container">
+  <div class="row" align="center">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <a href="../index.php"><img src="../update/user_photos/<?php echo $photo;?>" width="100" height="100" class="img-circle"></a><br>
+
+<!--LOGIN DATA MESSAGE-->
+<?php Session::display_message(); ?>
+<!--LOGIN DATA MESSAGE-->
+      
+      <br>
+      <input type="file" name="user_photo" id="photo">
+        <input type="hidden" name="current_photo" value="<?php echo $photo; ?>">
     </div>
   </div>
 </div> 
-<br><br>
-
-
-
+<br>
 <div class="container">
   <div class="row" align="center">
-    <div class="col-md-4">
-      <!--PLACEHOLDER-->
-    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <label style="color: green;">First Name:</label><br>
+      <input type="text" name="first_name" value="<?php echo $fname;?>">
 
-    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-      <?php Session::display_message(); ?><br><br>
-      <label>First Name:</label><br>
-      <input class="form-control" type="text" name="first_name" value="<?php echo $fname;?>"><br>
+      <br><br>
 
-      <label>Email:</label><br>
-      <input class="form-control" type="text" name="email" value="<?php echo $email;?>"><br><br>   
-    </div>
+      <label style="color: green;">Last Name:</label><br>
+      <input type="text" name="last_name" value="<?php echo $lname;?>">
 
-    <div class="col-md-4">
-      <!--PLACEHOLDER-->
+      <br><br>
+
+      <label style="color: green;">Email:</label><br>
+      <input type="text" name="email" value="<?php echo $email;?>">
+
+      <br><br>
     </div>
   </div>
 
@@ -85,13 +134,17 @@
   </div>
 </div>
 </form>
-<!--END OF ACCOUNT MANAGE FORM***-->
+<!--END OF ACCOUNT MANAGE FORM-->
+
+
+
+
+
+
+
 
  <script src="../bootstrap/js/bootstrap.js"></script>
 
 </body>
 </html>
-
-
-
 

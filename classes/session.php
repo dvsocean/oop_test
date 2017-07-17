@@ -18,18 +18,8 @@ class Session{
 
 
 
-
-
-
-
-
-
-
-
 }//END OF CLASS
 
 $session= new Session();
-
-
 
 ?>

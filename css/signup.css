@@ -4,6 +4,9 @@ body {
     background-color: #B06666;
     background-image: url("../beerrunners_main/product_image/coconut_tree.png");
 }
+h1 {
+    padding-bottom: px;
+}
 form {
     border: 3px solid black;
     width: 40%;
