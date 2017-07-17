@@ -48,7 +48,12 @@
         $lname= $row->last_name;
         $email= $row->email;
         $uname= $row->user_name;
-        $photo= $row->photo_path;
+  }
+
+  $sql2="SELECT upload_path FROM photos WHERE user_id='$id'";
+  $result2= $db->query($sql2);
+  if ($row2= $result2->fetch_object()) {
+      $pic= $row2->upload_path;
   }
 
 ?>
@@ -94,7 +99,7 @@
 <div class="container">
   <div class="row" align="center">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <a href="../index.php"><img src="../update/user_photos/<?php echo $photo;?>" width="100" height="100" class="img-circle"></a><br>
+      <a href="../index.php"><img src="../update/<?php echo $pic;?>" width="100" height="100" class="img-circle"></a><br>
 
 <!--LOGIN DATA MESSAGE-->
 <?php Session::display_message(); ?>
@@ -102,7 +107,7 @@
       
       <br>
       <input type="file" name="user_photo" id="photo">
-        <input type="hidden" name="current_photo" value="<?php echo $photo; ?>">
+        <input type="hidden" name="current_photo" value="<?php echo $pic; ?>">
     </div>
   </div>
 </div> 

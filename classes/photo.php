@@ -1,13 +1,18 @@
 <?php 
 
-class Photo{
+class Photo extends Object {
 
+	protected static $path="user_photos/";
 
-	public $temp_name;
-	public $type;
+	public $file;
+	public $user_id;
 	public $size;
-	public $name;
-	public $directory= "user_photos/";
+	public $upload_path;
+
+	protected static $table="photos";
+	protected static $table_columns= array('file', 'user_id', 'size', 'upload_path');
+
+
 
 
 	// public function up_load_photo($file, $current_photo, $id){
@@ -36,38 +41,7 @@ class Photo{
 	
 	// }
 
-	public function up_load_photo($file, $current_photo, $id){
-		global $db;
-
-		$tmp= $file['tmp_name'];
-		$size= $file['size'];
-		$name= $file['name'];
-		$target= "user_photos/". $name;
-
-		if(empty($file) || !$file || !is_array($file)){
-			die("FIRST IF FAILED");
-		}
-
-		if ($file['error'] > 0){
-			die($file['error']);
-		}
-
-		if(file_exists($target)){
-			Session::set_message("THIS FILE ALREADY EXISTS");
-			return false;
-		}
-
-		unlink("user_photos/".$current_photo);
-
-		if(move_uploaded_file($tmp, $target)){
-			$sql="UPDATE users SET photo_path='$name' WHERE id='$id'";
-			$db->query($sql);
-			return true;
-		} else {
-			die("QUERY FAILED");
-		}
-
-	}
+	
 
 
 }//END OF CLASS

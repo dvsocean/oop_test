@@ -3,22 +3,32 @@ require_once("../classes/ini.php");
 
 $photo= new Photo();
 
+$new_file= $_FILES['user_photo'];
+
+$photo->file= $new_file['name'];
+$photo->user_id= $_SESSION['user_id'];
+$photo->size= $new_file['size'];
+$photo->upload_path= "user_photos/". $photo->file;
+
+
 $current= $_POST['current_photo'];
 
-$id= $_SESSION['user_id'];
-
-$file= $_FILES['user_photo'];
 
 
 
 
 
-if ($photo->up_load_photo($file, $current, $id)) {
+
+
+if ($photo->upload_user_photo($new_file, $current, $photo->user_id)) {
 	Session::set_message("<p style='background-color: green;'>PHOTO UPDATE COMPLETE</p>");
 	$db->redirect("../profile/profile.php");
 } else{
-	Session::set_message("<p style='background-color: red;'>PHOTO UPLOAD FUNCTION FAILED</p>");
+	Session::set_message("FAILEDDDD");
+	
 	$db->redirect("../profile/profile.php");
+
+	
 }
 
 
