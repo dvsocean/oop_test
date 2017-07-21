@@ -27,7 +27,7 @@
 			echo"<br><br>";
 
 			echo"<strong>Here is the use of a constant</strong><br>";
-			echo "Constant: ".CAR;
+			echo "Constant: ".V6;
 
 			echo"<br><br>";
 
@@ -42,13 +42,17 @@
 
 			echo"<br>";
 
-			echo var_dump($car->how_many_passengers(3))." <strong>Results of the VAR DUMP</strong>";
+			echo var_dump($car->how_many_passengers(3))." <strong>Result of the VAR DUMP</strong>";
 
 			echo"<br><br>";
 
 			$var= $car->fuel_economy(550);
 
 			echo $var;
+
+			echo"<br><br>";
+			echo"<strong>Static call to the driveby method</strong><br>";
+			Car::driveby(2);
 		?>
 	</p>
 

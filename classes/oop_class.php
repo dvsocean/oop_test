@@ -37,6 +37,10 @@ EOD;
 		return $miles / $this->mpg." MPG ECONOMY"; 
 	}
 
+	public static function driveby($vatos){
+		echo"BRRAAATTTTT..SAID MY ". HARDWARE . " AND THERES " . $vatos." VATOS ON THE GROUND";
+	}
+
 }
 
 
