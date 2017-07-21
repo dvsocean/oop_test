@@ -1,7 +1,9 @@
 <?php 
 ob_start();
 
-define('CAR', 'Mereceds AMG Bi-Turbo');
+define('V6', '12');
+define('V8', '18');
+define('V10', '24');
 
 //SUPER CLASS ALWAYS GOES BEFORE HE'S CHILDREN(product.php)
 require_once("object.php");

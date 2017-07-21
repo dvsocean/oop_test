@@ -7,6 +7,7 @@ class Car{
 	public $transmission;
 	public $seats;
 	public $sound;
+	public $mpg;
 
 	public function show_off($doors, $wheels, $engine, $color, $transmission, $seats, $sound){
 		echo"My car has ". $doors." it sits<br>
@@ -18,9 +19,9 @@ class Car{
 		sound system called ".$sound.".";
 	}
 
-	public function delimit_me(){
+	public function delimit_me($param){
 		echo<<<EOD
-		This is HEREDOC used inside of a function!!!
+		This is HEREDOC used inside of a function, im also including one parameter called $param!!!
 EOD;
 	}
 
@@ -30,6 +31,10 @@ EOD;
 		} else {
 			return false;
 		}
+	}
+
+	public function fuel_economy($miles){
+		return $miles / $this->mpg." MPG ECONOMY"; 
 	}
 
 }

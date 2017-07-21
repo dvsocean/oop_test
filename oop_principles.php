@@ -15,10 +15,11 @@
 			$car->doors= "4 DOORS";
 			$car->wheels= "28 inch MOMO's";
 			$car->engine="V8 BI TURBO";
-			$car->color= "BLACK";
+			$car->color= "BLACK and YELLOW";
 			$car->transmission= "6 speed manual transmission";
 			$car->seats= 4;
 			$car->sound= "KICKER";
+			$car->mpg= V6;
 
 			echo"<strong>Functions can be built with numerous parameters</strong><br>";
 			$car->show_off($car->doors, $car->wheels, $car->engine, $car->color, $car->transmission, $car->seats, $car->sound);
@@ -30,14 +31,24 @@
 
 			echo"<br><br>";
 
-			$car->delimit_me();
+			$car->delimit_me($car->color);
 			echo"<br><br>";
 
-			if ($car->how_many_passengers(5)) {
-				echo"ENOUGH SEATS";
+			if ($car->how_many_passengers(3)) {
+				echo"ENOUGH SEATS FOR ALL MY NINJAS";
 			} else {
-				echo"UBER";
+				echo"CHEV-RO-LEGS";
 			}
+
+			echo"<br>";
+
+			echo var_dump($car->how_many_passengers(3))." <strong>Results of the VAR DUMP</strong>";
+
+			echo"<br><br>";
+
+			$var= $car->fuel_economy(550);
+
+			echo $var;
 		?>
 	</p>
 
