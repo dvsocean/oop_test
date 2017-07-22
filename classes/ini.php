@@ -1,9 +1,9 @@
 <?php 
 ob_start();
 
-define('V6', '12');
-define('V8', '18');
-define('V10', '24');
+define('LOW_GRADE', '2.75');
+define('MID_GRADE', '2.85');
+define('HI_GRADE', '2.95');
 define('HARDWARE', 'AK-47');
 
 //SUPER CLASS ALWAYS GOES BEFORE HE'S CHILDREN(product.php)

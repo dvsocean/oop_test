@@ -27,7 +27,7 @@
 			echo"<br><br>";
 
 			echo"<strong>Here is the use of a constant</strong><br>";
-			echo "Constant: ".V6;
+			echo "Constant: ". LOW_GRADE;
 
 			echo"<br><br>";
 
@@ -46,9 +46,11 @@
 
 			echo"<br><br>";
 
-			$var= $car->fuel_economy(550);
+			 
+			setlocale(LC_MONETARY,"en_US");
+			echo money_format("$%n", $car->gallons_in_tank(10));
 
-			echo $var;
+			
 
 			echo"<br><br>";
 			echo"<strong>Static call to the driveby method</strong><br>";

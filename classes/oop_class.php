@@ -33,8 +33,8 @@ EOD;
 		}
 	}
 
-	public function fuel_economy($miles){
-		return $miles / $this->mpg." MPG ECONOMY"; 
+	public function gallons_in_tank($gallons){
+		return $gallons * LOW_GRADE; 
 	}
 
 	public static function driveby($vatos){
